@@ -1,6 +1,6 @@
 # Sorting Algorithms
 
-Welcome to the Sorting Algorithms repository! This repository contains implementations and explanations of various sorting algorithms in different programming languages. The goal is to provide a resource for learning and understanding how different sorting algorithms work and their respective time complexities.
+Welcome to the Sorting Algorithms repository! This repository contains implementations and explanations of various sorting algorithms in C programming languages. The goal is to provide a resource for learning and understanding how different sorting algorithms work and their respective time complexities.
 
 ## Table of Contents
 
