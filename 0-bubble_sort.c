@@ -24,7 +24,8 @@ void bubble_sort(int *array, size_t size)
 	while (swap != 0)
 	{
 		swap = 0; /* reset the value of swap
-			     after every iteration */
+			     * after every iteration
+			     */
 
 		for (i = 0; i < (size - k); i++)
 		{
