@@ -4,9 +4,6 @@ void swap(listint_t *list_a, listint_t *list_b)
 {
 	listint_t *tmp, *ptr, *ptr_1, *ptr_2;
 
-	if (list_a->prev == NULL)
-	{
-		hea
 	if (list_b == list_a->next)
 	{
 		ptr = list_a->prev->next;
@@ -21,6 +18,8 @@ void swap(listint_t *list_a, listint_t *list_b)
 	}
 	else
 	{
+		if (list_a->prev = NULL)
+			list_a->next = 
 		ptr_1 = list_a->prev;
 		list_a->prev->next = list_b;
 		tmp = list_b->next;
