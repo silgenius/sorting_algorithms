@@ -2,28 +2,30 @@
 
 void swap(listint_t *list_a, listint_t *list_b)
 {
-	// swap the next_ptr
+	listint_t *tmp, *ptr, *ptr_1, *ptr_2;
 	if (list_b == list_a->next)
 	{
-		listint_t *ptr, *tmp;
 		ptr = list_a->prev->next;
+		ptr_1 = list_a->prev;
 		list_a->prev->next = list_b;
+		ptr_2 = list_b;
 		tmp = list_b->next;
 		list_b->next = ptr;
+		list_b->prev = ptr_1;
 		list_a->next = tmp;
+		list_a->prev = ptr_2;
 	}
 	else
 	{
-		listint_t *tmp;
+		ptr_1 = list_a->prev;
 		list_a->prev->next = list_b;
 		tmp = list_b->next;
 		list_b->next = list_a->next;
+		ptr_2 = list_b->prev;
 		list_b->prev->next = list_a;
+		list_b->prev = ptr_1;
 		list_a->next = tmp;
+		list_a->prev = ptr_2;
 	}
-	// swap the prev
-	/* tmp = list_b->prev;
-	list_b->prev = list_a->prev;
-	list_a->prev = list_b; */
 
 }
