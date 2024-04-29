@@ -1,35 +1,36 @@
 #include "sort.h"
 
-void swap(listint_t *list_a, listint_t *list_b)
+void insertion_sort_list(listint_t **list)
 {
-	listint_t *tmp, *ptr, *ptr_1, *ptr_2;
+	listint_t *ptr, *tmp, *prev;
+	if (list == NULL || *list == NULL || (*list)->next == NULL)
+		return;
+	ptr = (*list)->next;
 
-	if (list_a->prev == NULL)
+	while(ptr != NULL)
 	{
-		hea
-	if (list_b == list_a->next)
-	{
-		ptr = list_a->prev->next;
-		ptr_1 = list_a->prev;
-		list_a->prev->next = list_b;
-		ptr_2 = list_b;
-		tmp = list_b->next;
-		list_b->next = ptr;
-		list_b->prev = ptr_1;
-		list_a->next = tmp;
-		list_a->prev = ptr_2;
-	}
-	else
-	{
-		ptr_1 = list_a->prev;
-		list_a->prev->next = list_b;
-		tmp = list_b->next;
-		list_b->next = list_a->next;
-		ptr_2 = list_b->prev;
-		list_b->prev->next = list_a;
-		list_b->prev = ptr_1;
-		list_a->next = tmp;
-		list_a->prev = ptr_2;
-	}
+		tmp = ptr;
+		prev = ptr->prev;
 
-}
+		while (prev != NULL && prev->n > tmp->n)
+		{
+			if (tmp->next != NULL)
+				tmp->next->prev = prev;
+			prev->next = tmp->next;
+			tmp->prev = prev->prev;
+			
+			if (prev->prev != NULL)
+				prev->prev->next = tmp;
+			tmp->next = prev;
+			prev->prev = tmp;
+			
+			if (tmp->prev == NULL)
+				*list = tmp;
+
+			tmp = prev;
+			prev = prev->prev;
+		}
+
+		ptr = ptr->next;
+	}
+}	

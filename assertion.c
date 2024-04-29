@@ -1,6 +1,6 @@
 #include "sort.h"
 
-void swap(listint_t *list_a, listint_t *list_b)
+listint_t *swap(listint_t *list_a, listint_t *list_b)
 {
 	listint_t *tmp, *ptr, *ptr_1, *ptr_2;
 
@@ -18,10 +18,11 @@ void swap(listint_t *list_a, listint_t *list_b)
 	}
 	else
 	{
-		if (list_a->prev = NULL)
-			list_a->next = 
 		ptr_1 = list_a->prev;
-		list_a->prev->next = list_b;
+		if (list_a->prev != NULL)
+		{
+			list_a->prev->next = list_b;
+		}
 		tmp = list_b->next;
 		list_b->next = list_a->next;
 		ptr_2 = list_b->prev;
@@ -31,4 +32,5 @@ void swap(listint_t *list_a, listint_t *list_b)
 		list_a->prev = ptr_2;
 	}
 
+	return (list_b);
 }
