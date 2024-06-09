@@ -17,43 +17,52 @@ listint_t *swap(listint_t *head, listint_t *list_a, listint_t *list_b)
 	listint_t *tmp;
 
 	if (list_a == NULL || list_b == NULL || list_a == list_b)
-		return head;
+		return (head);
 
 	if (list_a->prev != NULL)
 		list_a->prev->next = list_b;
 	else
 		head = list_b;
 
+	/* Pass when node is next to each other */
 	if (list_a->next != list_b)
 	{
 		if (list_b->prev != NULL)
 			list_b->prev->next = list_a;
 		else
 			head = list_a;
-
-	 	if (list_a->next != NULL)
+		if (list_a->next != NULL)
 			list_a->next->prev = list_b;
 	}
-	 if (list_b->next != NULL)
-		 list_b->next->prev = list_a;
+	if (list_b->next != NULL)
+		list_b->next->prev = list_a;
+	tmp = list_a->prev;
 
-	 tmp = list_a->prev;
-	 if (list_a->next == list_b)
-		 list_a->prev = list_b;
-	 else
-		 list_a->prev = list_b->prev;
-	 list_b->prev = tmp;
-	 
-	 if (list_a->next == list_b)
-		 tmp = list_a;
-	 else
-	 	tmp = list_a->next;
-	 list_a->next = list_b->next;
-	 list_b->next = tmp;
-	 
-	 return head;
+	/* Do this if node are next to each other */
+	if (list_a->next == list_b)
+		list_a->prev = list_b;
+	else
+		list_a->prev = list_b->prev;
+	list_b->prev = tmp;
+
+	if (list_a->next == list_b)
+		tmp = list_a;
+	else
+		tmp = list_a->next;
+	list_a->next = list_b->next;
+	list_b->next = tmp;
+
+	return (head);
 }
 
+/**
+ * insertion_sort_list - Sorts a doubly linked list of integers in ascending
+ * order using the Insertion sort algorithm
+ * @list: A pointer to the head of the doubly linked list
+ *
+ * Description: The function swaps the nodes themselves and prints the list
+ *              after each swap.
+ */
 void insertion_sort_list(listint_t **list)
 {
 	listint_t *tmp, *ptr, *var_1;
@@ -75,6 +84,7 @@ void insertion_sort_list(listint_t **list)
 			{
 				var_1 = tmp;
 				*list = swap(*list, var_1->prev, var_1);
+				print_list(*list);
 			}
 
 		}
@@ -83,4 +93,4 @@ void insertion_sort_list(listint_t **list)
 			ptr = ptr->next;
 		}
 	}
-}	
+}
